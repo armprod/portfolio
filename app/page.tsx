@@ -1,65 +1,50 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-[#1E1E1E] text-slate-100 flex flex-col justify-between px-6 md:px-24 py-12">
+      {/* Top Navigation / logo */}
+      <nav className="flex justify-between items-center max-w-5xl mx-auto w-full">
+        <span className="text-xl font-bold tracking-wider text-[#CC8500]">Armprod.com</span>
+        <div className="flex gap-6 text-sm text-slate-300">
+          <a href="#about-me" className="hover:text-[#CC8500] transition">About Me</a>
+          <a href="#projects" className="hover:text-[#CC8500] transition">Projects</a>
+          <a href="#contact" className="hover:text-[#CC8500] transition">Contact</a>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </nav>
+
+      {/* Main Introductory Section */}
+      <section className="max-w-5xl mx-auto w-full my-auto py-16">
+        <p className="text-[#CC8500] font-medium mb-3">Hi, my name is</p>
+        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+          Daniel Knieradl <span className="text-slate-500">/ IT Enthusiast</span>
+        </h1>
+          <div className="text-slate-400 text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">
+            <p>
+              I’m studying Information Technology and work as a full-stack developer. In the world of IT, I’ve long focused on programming – my main area of expertise is the C# and .NET ecosystem, but I’m also actively expanding my knowledge to include modern web applications.
+            </p><br/>
+            <p>
+              In my free time, I work on my own projects. The key to my efficiency is the use of modern tools and artificial intelligence, which help me to experiment, push my boundaries and successfully deliver even complex projects across the entire technology stack.
+            </p>
+          </div>
+        <div className="flex flex-wrap gap-4">
+          <a 
+            href="#projects" 
+            className="bg-[#CC8500] hover:bg-[#b07200] text-slate-950 font-semibold px-6 py-3 rounded-lg transition shadow-lg shadow-[#CC8500]/20"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+            View my projects
           </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <a 
+            href="#contact" 
+            className="border border-slate-700 hover:border-[#CC8500] text-slate-300 hover:text-[#CC8500] font-semibold px-6 py-3 rounded-lg transition"
           >
-            Documentation
+            Contact Me
           </a>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="max-w-5xl mx-auto w-full text-center text-xs text-slate-600">
+        © {new Date().getFullYear()} • All Right Reserved, Daniel Knieradl
+      </footer>
+    </main>
   );
 }
