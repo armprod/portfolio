@@ -11,8 +11,10 @@ export default function Skills() {
           <h3 className="text-[#CC8500] font-semibold text-lg mb-3">Backend</h3>
           <ul className="space-y-2 text-slate-400 text-sm">
             <li>• C# & .NET / .NET Core</li>
-            <li>• SQL & Databáze</li>
-            <li>• API & Architektura</li>
+            <li>• SQL and Databases</li>
+            <li>• API & Architecture</li>
+            <li>• Python, PHP</li>
+            <li>• Node.js (JavaScript, TypeScript)</li>
           </ul>
         </div>
 
@@ -31,12 +33,12 @@ export default function Skills() {
         {/* Tools */}
         <div className="bg-[#181818] border border-slate-800 p-6 rounded-xl">
           <h3 className="text-[#CC8500] font-semibold text-lg mb-3">
-            Nástroje & AI
+            Tools & AI
           </h3>
           <ul className="space-y-2 text-slate-400 text-sm">
             <li>• Git & GitHub</li>
-            <li>• AI asistenti (Efektivita)</li>
-            <li>• VS Code & Visual Studio</li>
+            <li>• AI assistants</li>
+            <li>• Prompts Writing</li>
           </ul>
         </div>
       </div>
