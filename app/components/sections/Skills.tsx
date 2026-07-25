@@ -7,8 +7,8 @@ export default function Skills() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Backend */}
-        <div className="bg-[#181818] border border-slate-800 p-6 rounded-xl">
-          <h3 className="text-[#CC8500] font-semibold text-lg mb-3">Backend</h3>
+        <div className="group bg-[#181818] border border-slate-800 p-6 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:border-[#CC8500]/50 hover:shadow-xl hover:shadow-[#CC8500]/5">
+          <h3 className="text-slate-100 font-semibold text-lg mb-3 group-hover:text-[#CC8500] transition-colors">Backend</h3>
           <ul className="space-y-2 text-slate-400 text-sm">
             <li>• C# & .NET / .NET Core</li>
             <li>• SQL and Databases</li>
@@ -19,8 +19,8 @@ export default function Skills() {
         </div>
 
         {/* Frontend */}
-        <div className="bg-[#181818] border border-slate-800 p-6 rounded-xl">
-          <h3 className="text-[#CC8500] font-semibold text-lg mb-3">
+        <div className="group bg-[#181818] border border-slate-800 p-6 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:border-[#CC8500]/50 hover:shadow-xl hover:shadow-[#CC8500]/5">
+          <h3 className="text-slate-100 font-semibold text-lg mb-3 group-hover:text-[#CC8500] transition-colors">
             Frontend
           </h3>
           <ul className="space-y-2 text-slate-400 text-sm">
@@ -31,8 +31,8 @@ export default function Skills() {
         </div>
 
         {/* Tools */}
-        <div className="bg-[#181818] border border-slate-800 p-6 rounded-xl">
-          <h3 className="text-[#CC8500] font-semibold text-lg mb-3">
+        <div className="group bg-[#181818] border border-slate-800 p-6 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:border-[#CC8500]/50 hover:shadow-xl hover:shadow-[#CC8500]/5">
+          <h3 className="text-slate-100 font-semibold text-lg mb-3 group-hover:text-[#CC8500] transition-colors">
             Tools & AI
           </h3>
           <ul className="space-y-2 text-slate-400 text-sm">
