@@ -1,6 +1,9 @@
+'use client';
+import AnimatedSection from '../ui/AnimatedSection';
+
 export default function About() {
   return (
-    <section id="about-me" className="max-w-5xl mx-auto w-full py-20 scroll-mt-16">
+    <AnimatedSection id="about-me" className="max-w-5xl mx-auto w-full py-20 scroll-mt-16">
       <h2 className="text-2xl md:text-3xl font-bold text-slate-100 mb-6 flex items-center gap-3">
         <span className="text-[#CC8500]">01.</span> About Me
       </h2>
@@ -18,6 +21,6 @@ export default function About() {
           complex projects across the entire technology stack.
         </p>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }

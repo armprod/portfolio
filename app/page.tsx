@@ -5,6 +5,7 @@ import Skills from "./components/sections/Skills";
 import Projects from "./components/sections/Projects";
 import Experience from "./components/sections/Experience";
 import Contact from "./components/sections/Contact";
+import DancingPet from './components/ui/DancingPet';
 
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
         <Projects />
         <Experience />
         <Contact />
+        <DancingPet />
       </div>
 
       {/* Footer */}

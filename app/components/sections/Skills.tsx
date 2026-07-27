@@ -1,6 +1,10 @@
+'use client';
+
+import AnimatedSection from '../ui/AnimatedSection';
+
 export default function Skills() {
   return (
-    <section id="skills" className="max-w-5xl mx-auto w-full py-10 scroll-mt-16">
+    <AnimatedSection id="skills" className="max-w-5xl mx-auto w-full py-10 scroll-mt-16">
       <h2 className="text-2xl md:text-3xl font-bold text-slate-100 mb-8 flex items-center gap-3">
         <span className="text-[#CC8500]">02.</span> Technology and Skills
       </h2>
@@ -42,6 +46,6 @@ export default function Skills() {
           </ul>
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }

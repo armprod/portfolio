@@ -1,6 +1,8 @@
+import AnimatedSection from '../ui/AnimatedSection';
+
 export default function Hero() {
   return (
-    <section className="max-w-5xl mx-auto w-full my-auto py-16">
+    <AnimatedSection className="max-w-5xl mx-auto w-full my-auto py-16">
       <p className="text-[#CC8500] font-medium mb-3">Hi, my name is</p>
       <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
         Daniel Knieradl <span className="text-slate-500">/ IT Enthusiast</span>
@@ -24,6 +26,6 @@ export default function Hero() {
           Contact Me
         </a>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }

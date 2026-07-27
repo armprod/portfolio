@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import AnimatedSection from '../ui/AnimatedSection';
 
 export default function Contact() {
   const [copiedType, setCopiedType] = useState<string | null>(null);
@@ -17,7 +18,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="max-w-5xl mx-auto w-full py-16 scroll-mt-20">
+    <AnimatedSection id="contact" className="max-w-5xl mx-auto w-full py-16 scroll-mt-20">
       <h2 className="text-2xl md:text-3xl font-bold text-slate-100 mb-8 flex items-center gap-3">
         <span className="text-[#CC8500]">05.</span> Get In Touch
       </h2>
@@ -113,6 +114,6 @@ export default function Contact() {
 
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }
