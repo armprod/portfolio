@@ -1,8 +1,8 @@
 export default function Skills() {
   return (
-    <section className="max-w-5xl mx-auto w-full py-10">
+    <section id="skills" className="max-w-5xl mx-auto w-full py-10 scroll-mt-16">
       <h2 className="text-2xl md:text-3xl font-bold text-slate-100 mb-8 flex items-center gap-3">
-        <span className="text-[#CC8500]">02.</span> Technology and skills
+        <span className="text-[#CC8500]">02.</span> Technology and Skills
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

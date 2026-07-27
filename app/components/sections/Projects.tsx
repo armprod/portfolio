@@ -26,7 +26,7 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projects" className="max-w-5xl mx-auto w-full py-16">
+    <section id="projects" className="max-w-5xl mx-auto w-full py-16 scroll-mt-16">
       <h2 className="text-2xl md:text-3xl font-bold text-slate-100 mb-8 flex items-center gap-3">
         <span className="text-[#CC8500]">03.</span> Projects
       </h2>
