@@ -1,43 +1,56 @@
-import ProjectCard from '../ui/ProjectCard';
-import AnimatedSection from '../ui/AnimatedSection';
+"use client";
+
+import ProjectCard from "../ui/ProjectCard";
+import AnimatedSection from "../ui/AnimatedSection";
+import { useLanguage } from "@/app/context/LanguageContext";
 
 export default function Projects() {
-  {/* Two-dimensional array with values about my projects */}
+  const { t } = useLanguage();
+
   const finishedProjects = [
     {
       title: "Armprod Calculator",
-      description: "A robust cross-platform desktop calculator in Avalonia (.NET) with arbitrary precision and advanced math support",
+      description: t(
+        "A robust cross-platform desktop calculator in Avalonia (.NET) with arbitrary precision and advanced math support",
+        "Robustní multiplatformní desktopová kalkulačka v Avalonia (.NET) s libovolnou přesností a pokročilou podporou matematiky",
+      ),
       images: [
         "/images/ArmprodCalculatorIconNew.ico",
         "/images/Armprod_Calculator_basic.png",
-        "/images/Armprod_Calculator_scientific.png"
+        "/images/Armprod_Calculator_scientific.png",
       ],
       tags: ["C#", ".NET", "Avalonia UI"],
-      githubUrl: "https://github.com"
+      githubUrl: "https://github.com",
     },
     {
-      title: "My personal web portfolio",
-      description: "A modern website created using Next.js, TypeScript and Tailwind CSS",
-      images: [
-        "/images/Armprod_Calculator_basic.png"
-      ],
+      title: t("My personal web portfolio", "Mé osobní webové portfolio"),
+      description: t(
+        "A modern website created using Next.js, TypeScript and Tailwind CSS",
+        "Moderní webová stránka vytvořená pomocí Next.js, TypeScriptu a Tailwind CSS",
+      ),
+      images: ["/images/Armprod_Calculator_basic.png"],
       tags: ["Next.js", "Tailwind"],
-      githubUrl: "https://github.com"
-    }
+      githubUrl: "https://github.com",
+    },
   ];
 
   return (
-    <AnimatedSection id="projects" className="max-w-5xl mx-auto w-full py-16 scroll-mt-16">
+    <AnimatedSection
+      id="projects"
+      className="max-w-5xl mx-auto w-full py-16 scroll-mt-16"
+    >
       <h2 className="text-2xl md:text-3xl font-bold text-slate-100 mb-8 flex items-center gap-3">
-        <span className="text-[#CC8500]">03.</span> Projects
+        <span className="text-[#CC8500]">03.</span> {t("Projects", "Projekty")}
       </h2>
 
       {/* Finished Projects */}
-      <h3 className="text-lg font-semibold text-slate-300 mb-4">Finished Projects</h3>
-      
+      <h3 className="text-lg font-semibold text-slate-300 mb-4">
+        {t("Finished Projects", "Dokončené projekty")}
+      </h3>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         {finishedProjects.map((project, index) => (
-          <ProjectCard 
+          <ProjectCard
             key={index}
             title={project.title}
             description={project.description}
@@ -50,27 +63,42 @@ export default function Projects() {
 
       {/* Upcoming Projects */}
       <h3 className="text-lg font-semibold text-slate-300 mb-4 flex items-center gap-2">
-        Upcoming Projects
-        <span className="text-xs bg-amber-500/10 text-amber-500 border border-amber-500/20 px-2 py-0.5 rounded-full font-normal animate-pulse">WiP</span>
+        {t("Upcoming Projects", "Připravované projekty")}
+        <span className="text-xs bg-amber-500/10 text-amber-500 border border-amber-500/20 px-2 py-0.5 rounded-full font-normal animate-pulse">
+          WiP
+        </span>
       </h3>
       <div className="group bg-[#181818] border border-slate-800 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:border-[#CC8500] hover:shadow-xl hover:shadow-[#CC8500]/10">
         <div className="bg-[#181818]/60 border border-slate-800/80 border-dashed rounded-xl p-6 flex flex-col justify-between">
           <div>
             <div className="flex justify-between items-start mb-2">
-              <h4 className="text-xl font-bold text-slate-100 mb-2 group-hover:text-[#CC8500] transition-colors">Armprod Notepad</h4>
-              <span className="text-xs text-amber-500 bg-amber-500/10 px-2 py-1 rounded">Currently in Development</span>
+              <h4 className="text-xl font-bold text-slate-100 mb-2 group-hover:text-[#CC8500] transition-colors">
+                Armprod Notepad
+              </h4>
+              <span className="text-xs text-amber-500 bg-amber-500/10 px-2 py-1 rounded">
+                {t("Currently in Development", "Právě ve vývoji")}
+              </span>
             </div>
             <p className="text-slate-400 text-sm mb-4 leading-relaxed">
-              A sophisticated and user-friendly text editor for all your notes and jottings, inspired by Obsidian
+              {t(
+                "A sophisticated and user-friendly text editor for all your notes and jottings, inspired by Obsidian",
+                "Propracovaný a uživatelsky přívětivý textový editor pro všechny vaše poznámky, inspirovaný aplikací Obsidian",
+              )}
             </p>
             <div className="flex flex-wrap gap-2 mb-6">
-              <span className="text-xs bg-[#252525] text-amber-500/80 px-2.5 py-1 rounded">C#</span>
-              <span className="text-xs bg-[#252525] text-amber-500/80 px-2.5 py-1 rounded">ASP.NET Core</span>
-              <span className="text-xs bg-[#252525] text-amber-500/80 px-2.5 py-1 rounded">SQL</span>
+              <span className="text-xs bg-[#252525] text-amber-500/80 px-2.5 py-1 rounded">
+                C#
+              </span>
+              <span className="text-xs bg-[#252525] text-amber-500/80 px-2.5 py-1 rounded">
+                ASP.NET Core
+              </span>
+              <span className="text-xs bg-[#252525] text-amber-500/80 px-2.5 py-1 rounded">
+                SQL
+              </span>
             </div>
           </div>
           <div className="text-xs text-slate-500">
-            Link to GitHub after relese
+            {t("Link to GitHub after release", "Odkaz na GitHub po vydání")}
           </div>
         </div>
       </div>

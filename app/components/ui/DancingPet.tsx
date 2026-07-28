@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 export default function DancingPet() {
   const [isMouseInside, setIsMouseInside] = useState(false);
   const [showBubble, setShowBubble] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   const [pupilOffset, setPupilOffset] = useState({ x: 0, y: 0 });
   const [rotation, setRotation] = useState({ rotateX: 0, rotateY: 0 });
 
@@ -37,8 +37,8 @@ export default function DancingPet() {
       });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   const handleClick = () => {
@@ -55,11 +55,11 @@ export default function DancingPet() {
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: isMouseInside ? 1 : 0.7 }}
       transition={{ delay: 1.5, duration: 0.8, type: "spring", bounce: 0.4 }}
-      style={{ 
+      style={{
         rotateX: rotation.rotateX,
         rotateY: rotation.rotateY,
-        perspective: 800, 
-        transformOrigin: 'center' 
+        perspective: 800,
+        transformOrigin: "center",
       }}
       whileHover={{ scale: 1.15, opacity: 1 }}
       whileTap={{ scale: 0.9, rotate: 360 }}
@@ -67,12 +67,12 @@ export default function DancingPet() {
       onHoverEnd={() => setIsMouseInside(false)}
       onClick={handleClick}
     >
-      <div 
+      <div
         className="absolute z-10 pointer-events-none"
-        style={{ 
-          width: '150px',
-          left: 'calc( -16px + 10px )',
-          bottom: '70px' 
+        style={{
+          width: "150px",
+          left: "calc( -16px + 10px )",
+          bottom: "70px",
         }}
       >
         <AnimatePresence>
@@ -93,33 +93,114 @@ export default function DancingPet() {
       </div>
 
       {/* SVG cat */}
-      <svg 
-        width="64" 
-        height="64" 
-        viewBox="0 0 64 64" 
-        fill="none" 
+      <svg
+        width="64"
+        height="64"
+        viewBox="0 0 64 64"
+        fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="drop-shadow-lg"
       >
-        <circle cx="32" cy="36" r="22" fill="#F97316" stroke="#C2410C" strokeWidth="2.5"/>
-        <path d="M14 22L18 8L28 18" fill="#F97316" stroke="#C2410C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M50 22L46 8L36 18" fill="#F97316" stroke="#C2410C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <circle
+          cx="32"
+          cy="36"
+          r="22"
+          fill="#F97316"
+          stroke="#C2410C"
+          strokeWidth="2.5"
+        />
+        <path
+          d="M14 22L18 8L28 18"
+          fill="#F97316"
+          stroke="#C2410C"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M50 22L46 8L36 18"
+          fill="#F97316"
+          stroke="#C2410C"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
         <path d="M17 19L19 11L25 17" fill="#FDBA74" />
         <path d="M47 19L45 11L39 17" fill="#FDBA74" />
-        <path d="M29 43L35 43L32 46Z" fill="#1E293B"/>
-        <path d="M32 46C32 49 29 50 28 50" stroke="#C2410C" strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M32 46C32 49 35 50 36 50" stroke="#C2410C" strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M12 43L22 44" stroke="#C2410C" strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M10 48L20 46" stroke="#C2410C" strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M52 43L42 44" stroke="#C2410C" strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M54 48L44 46" stroke="#C2410C" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M29 43L35 43L32 46Z" fill="#1E293B" />
+        <path
+          d="M32 46C32 49 29 50 28 50"
+          stroke="#C2410C"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M32 46C32 49 35 50 36 50"
+          stroke="#C2410C"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M12 43L22 44"
+          stroke="#C2410C"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M10 48L20 46"
+          stroke="#C2410C"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M52 43L42 44"
+          stroke="#C2410C"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M54 48L44 46"
+          stroke="#C2410C"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
         <g>
-          <ellipse cx="22" cy="32" rx="5.5" ry="6.5" fill="white" stroke="#C2410C" strokeWidth="1.5"/>
-          <motion.circle cx="22" cy="32" r="2.2" fill="#1E293B" animate={{ x: pupilOffset.x, y: pupilOffset.y }} transition={{ type: "spring", stiffness: 400, damping: 25 }}/>
+          <ellipse
+            cx="22"
+            cy="32"
+            rx="5.5"
+            ry="6.5"
+            fill="white"
+            stroke="#C2410C"
+            strokeWidth="1.5"
+          />
+          <motion.circle
+            cx="22"
+            cy="32"
+            r="2.2"
+            fill="#1E293B"
+            animate={{ x: pupilOffset.x, y: pupilOffset.y }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+          />
         </g>
         <g>
-          <ellipse cx="42" cy="32" rx="5.5" ry="6.5" fill="white" stroke="#C2410C" strokeWidth="1.5"/>
-          <motion.circle cx="42" cy="32" r="2.2" fill="#1E293B" animate={{ x: pupilOffset.x, y: pupilOffset.y }} transition={{ type: "spring", stiffness: 400, damping: 25 }}/>
+          <ellipse
+            cx="42"
+            cy="32"
+            rx="5.5"
+            ry="6.5"
+            fill="white"
+            stroke="#C2410C"
+            strokeWidth="1.5"
+          />
+          <motion.circle
+            cx="42"
+            cy="32"
+            r="2.2"
+            fill="#1E293B"
+            animate={{ x: pupilOffset.x, y: pupilOffset.y }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+          />
         </g>
       </svg>
     </motion.div>

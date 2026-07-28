@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
+import { useState } from "react";
+import Image from "next/image";
 
 interface ProjectCardProps {
   title: string;
@@ -11,7 +11,13 @@ interface ProjectCardProps {
   githubUrl?: string;
 }
 
-export default function ProjectCard({ title, description, images, tags, githubUrl }: ProjectCardProps) {
+export default function ProjectCard({
+  title,
+  description,
+  images,
+  tags,
+  githubUrl,
+}: ProjectCardProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const nextImage = (e: React.MouseEvent) => {
@@ -29,7 +35,7 @@ export default function ProjectCard({ title, description, images, tags, githubUr
       <div>
         {/* Pictures */}
         <div className="h-64 border-b border-slate-800 relative overflow-hidden bg-[#151515]">
-          <Image 
+          <Image
             src={images[currentImageIndex]}
             alt={title}
             fill
@@ -39,14 +45,14 @@ export default function ProjectCard({ title, description, images, tags, githubUr
 
           {images.length > 1 && (
             <>
-              <button 
+              <button
                 onClick={prevImage}
                 className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-[#CC8500] text-white w-8 h-8 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
                 aria-label="Předchozí obrázek"
               >
                 ‹
               </button>
-              <button 
+              <button
                 onClick={nextImage}
                 className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-[#CC8500] text-white w-8 h-8 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
                 aria-label="Další obrázek"
@@ -62,13 +68,18 @@ export default function ProjectCard({ title, description, images, tags, githubUr
 
         {/* Description */}
         <div className="p-6">
-          <h4 className="text-xl font-bold text-slate-100 mb-2 group-hover:text-[#CC8500] transition-colors">{title}</h4>
+          <h4 className="text-xl font-bold text-slate-100 mb-2 group-hover:text-[#CC8500] transition-colors">
+            {title}
+          </h4>
           <p className="text-slate-400 text-sm mb-4 leading-relaxed">
             {description}
           </p>
           <div className="flex flex-wrap gap-2 mb-6">
             {tags.map((tag, index) => (
-              <span key={index} className="text-xs bg-[#252525] text-[#CC8500] px-2.5 py-1 rounded">
+              <span
+                key={index}
+                className="text-xs bg-[#252525] text-[#CC8500] px-2.5 py-1 rounded"
+              >
                 {tag}
               </span>
             ))}
@@ -79,7 +90,12 @@ export default function ProjectCard({ title, description, images, tags, githubUr
       {/* GitHub & Other Links*/}
       {githubUrl && (
         <div className="px-6 pb-6 flex gap-4 text-sm">
-          <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-[#CC8500] transition font-medium">
+          <a
+            href={githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-slate-300 hover:text-[#CC8500] transition font-medium"
+          >
             GitHub →
           </a>
         </div>
