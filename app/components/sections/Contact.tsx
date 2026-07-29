@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import AnimatedSection from "../ui/AnimatedSection";
-import { useLanguage } from "@/app/context/LanguageContext";
+import { useLanguage } from "@/app/context/ThemeLanguageContext";
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -25,24 +25,24 @@ export default function Contact() {
       id="contact"
       className="max-w-5xl mx-auto w-full py-16 scroll-mt-16"
     >
-      <h2 className="text-2xl md:text-3xl font-bold text-slate-100 mb-8 flex items-center gap-3">
+      <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100 mb-8 flex items-center gap-3">
         <span className="text-[#CC8500]">05.</span>{" "}
         {t("Get In Touch", "Kontaktujte mě")}
       </h2>
 
-      <div className="group bg-[#181818] border border-slate-800 rounded-xl overflow-hidden flex flex-col p-8 md:p-12 text-center transition-all duration-300 hover:scale-[1.02] hover:border-[#CC8500]/50 hover:shadow-xl hover:shadow-[#CC8500]/5">
-        <h3 className="text-2xl md:text-3xl font-bold text-slate-100 mb-4 group-hover:text-[#CC8500] transition-colors duration-300">
+      <div className="group bg-white dark:bg-[#181818] border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden flex flex-col p-8 md:p-12 text-center transition-all duration-300 hover:scale-[1.02] hover:border-[#CC8500]/50 hover:shadow-xl hover:shadow-[#CC8500]/5">
+        <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4 group-hover:text-[#CC8500] transition-colors duration-300">
           {t("Let's build something together", "Pojďme něco vytvořit společně")}
         </h3>
 
-        <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto mb-8 leading-relaxed">
+        <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base max-w-xl mx-auto mb-8 leading-relaxed">
           {t(
             "I'm currently looking for new opportunities, whether it's a junior developer position, freelance project, or just a chat about technology. My inbox is always open!",
             "V současné době hledám nové příležitosti, ať už jde o pozici juniorního vývojáře, projekt na volné noze nebo jen o neformální rozhovor o technologiích. Moje schránka je vždy otevřená!",
           )}
         </p>
 
-        {/* Copy Buttons) */}
+        {/* Copy Buttons */}
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
           {/* Email button */}
           <button
@@ -89,7 +89,7 @@ export default function Contact() {
           {/* Discord button */}
           <button
             onClick={() => handleCopy(discordTag, "discord")}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:border-[#CC8500]/50 cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:border-[#CC8500]/50 cursor-pointer"
           >
             {copiedType === "discord" ? (
               <>
@@ -113,7 +113,7 @@ export default function Contact() {
             ) : (
               <>
                 <svg
-                  className="w-5 h-5 text-slate-400"
+                  className="w-5 h-5 text-slate-500 dark:text-slate-400"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -126,7 +126,7 @@ export default function Contact() {
         </div>
 
         {/* Social Media and links */}
-        <div className="flex justify-center items-center gap-6 mt-8 text-sm text-slate-400">
+        <div className="flex justify-center items-center gap-6 mt-8 text-sm text-slate-600 dark:text-slate-400">
           {/* GitHub link */}
           <a
             href="https://github.com/armprod"

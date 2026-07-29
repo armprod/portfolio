@@ -1,6 +1,6 @@
 "use client";
 import AnimatedSection from "../ui/AnimatedSection";
-import { useLanguage } from "@/app/context/LanguageContext";
+import { useLanguage } from "@/app/context/ThemeLanguageContext";
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -11,14 +11,14 @@ export default function Hero() {
         {t("Hi, my name is", "Ahoj, jmenuji se")}
       </p>
 
-      <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+      <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 mb-6">
         Daniel Knieradl{" "}
-        <span className="text-slate-500">
+        <span className="text-slate-400 dark:text-slate-500">
           {t("/ IT Enthusiast", "/ IT Nadšenec")}
         </span>
       </h1>
 
-      <div className="text-slate-400 text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">
+      <div className="text-slate-600 dark:text-slate-400 text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">
         <p>
           {t(
             "AI Prompt Engineering | Full Stack Developer | Studying at an IT School | Self-Education",
@@ -36,7 +36,7 @@ export default function Hero() {
         </a>
         <a
           href="#contact"
-          className="border border-slate-700 hover:border-[#CC8500] text-slate-300 hover:text-[#CC8500] font-semibold px-6 py-3 rounded-lg transition"
+          className="border border-slate-300 dark:border-slate-700 hover:border-[#CC8500] dark:hover:border-[#CC8500] text-slate-700 dark:text-slate-300 hover:text-[#CC8500] dark:hover:text-[#CC8500] font-semibold px-6 py-3 rounded-lg transition"
         >
           {t("Contact Me", "Kontaktujte mě")}
         </a>

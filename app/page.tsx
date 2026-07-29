@@ -4,12 +4,11 @@ import Skills from "./components/sections/Skills";
 import Projects from "./components/sections/Projects";
 import Experience from "./components/sections/Experience";
 import Contact from "./components/sections/Contact";
-import DancingPet from './components/ui/DancingPet';
-
+import DancingPet from "./components/ui/DancingPet";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#1E1E1E] text-slate-100 flex flex-col justify-between px-6 md:px-24 py-12">
+    <main className="min-h-screen bg-slate-50 dark:bg-[#1E1E1E] text-slate-900 dark:text-slate-100 flex flex-col justify-between px-6 md:px-24 py-12">
       <div>
         <Hero />
         <About />

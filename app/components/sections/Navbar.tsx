@@ -2,34 +2,37 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLanguage } from "@/app/context/LanguageContext";
+import { useLanguage } from "@/app/context/ThemeLanguageContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [showSettings, setShowSettings] = useState(false);
-  const { lang, setLang, t } = useLanguage();
+  const [showLangMenu, setShowLangMenu] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { lang, setLang, theme, toggleTheme, t } = useLanguage();
 
-  // Ref pro sledování elementu nastavení
-  const settingsRef = useRef<HTMLDivElement>(null);
+  const langMenuRef = useRef<HTMLDivElement>(null);
 
-  // Zavření nastavení při kliknutí kamkoliv jinam mimo tento element
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
-        settingsRef.current &&
-        !settingsRef.current.contains(event.target as Node)
+        langMenuRef.current &&
+        !langMenuRef.current.contains(event.target as Node)
       ) {
-        setShowSettings(false);
+        setShowLangMenu(false);
       }
     }
 
-    if (showSettings) {
+    if (showLangMenu) {
       document.addEventListener("mousedown", handleClickOutside);
     }
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [showSettings]);
+  }, [showLangMenu]);
 
   const navLinks = [
     { href: "#about-me", label: t("About Me", "O mně") },
@@ -51,7 +54,7 @@ export default function Navbar() {
           <button
             onClick={() => {
               setIsOpen(!isOpen);
-              setShowSettings(false);
+              setShowLangMenu(false);
             }}
             className="md:hidden text-slate-700 dark:text-slate-300 hover:text-[#CC8500] focus:outline-none p-2"
             aria-label="Menu"
@@ -93,52 +96,73 @@ export default function Navbar() {
             </a>
           ))}
 
-          {/* Desktop Settings dropdown button obalený v refu */}
-          <div className="relative" ref={settingsRef}>
-            <button
-              onClick={() => setShowSettings(!showSettings)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:border-[#CC8500] text-slate-700 dark:text-slate-300 hover:text-[#CC8500] transition text-xs font-semibold"
-            >
-              {t("Settings", "Nastavení")}
-            </button>
+          {/* Theme toggle + Language selector */}
+          <div className="flex items-center gap-3">
+            {mounted ? (
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-lg border border-slate-300 dark:border-slate-700 hover:border-[#CC8500] text-slate-700 dark:text-slate-300 hover:text-[#CC8500] transition text-sm flex items-center justify-center"
+                title={
+                  theme === "dark"
+                    ? "Switch to Light Mode"
+                    : "Switch to Dark Mode"
+                }
+              >
+                {theme === "dark" ? "☀️" : "🌙"}
+              </button>
+            ) : (
+              <div className="w-9 h-9" /> // Placeholder
+            )}
 
-            <AnimatePresence>
-              {showSettings && (
-                <motion.div
-                  initial={{ opacity: 0, y: 8, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 8, scale: 0.95 }}
-                  transition={{ duration: 0.15, ease: "easeOut" }}
-                  className="absolute right-0 mt-2 w-48 bg-white dark:bg-[#252525] border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl p-3 z-50"
-                >
-                  <div className="text-xs font-bold text-slate-400 dark:text-slate-500 mb-2 uppercase tracking-wider">
-                    {t("Language", "Jazyk")}
-                  </div>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => setLang("en")}
-                      className={`flex-1 py-1.5 text-xs font-bold rounded-md transition ${
-                        lang === "en"
-                          ? "bg-[#CC8500] text-white"
-                          : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
-                      }`}
-                    >
-                      EN
-                    </button>
-                    <button
-                      onClick={() => setLang("cs")}
-                      className={`flex-1 py-1.5 text-xs font-bold rounded-md transition ${
-                        lang === "cs"
-                          ? "bg-[#CC8500] text-white"
-                          : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
-                      }`}
-                    >
-                      CS
-                    </button>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {/* Desktop Language Selector */}
+            <div className="relative" ref={langMenuRef}>
+              <button
+                onClick={() => setShowLangMenu(!showLangMenu)}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:border-[#CC8500] text-slate-700 dark:text-slate-300 hover:text-[#CC8500] transition text-xs font-semibold"
+                title="Change Language / Změnit jazyk"
+              >
+                <span>🌐</span>
+                <span>{lang.toUpperCase()}</span>
+                <span className="text-[10px] text-slate-400">▼</span>
+              </button>
+
+              <AnimatePresence>
+                {showLangMenu && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                    transition={{ duration: 0.15, ease: "easeOut" }}
+                    className="absolute right-0 mt-2 w-40 bg-white dark:bg-[#252525] border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl p-2 z-50"
+                  >
+                    <div className="flex flex-col gap-1">
+                      <button
+                        onClick={() => setLang("en")}
+                        className={`flex items-center justify-between w-full px-3 py-2 text-xs font-bold rounded-lg transition ${
+                          lang === "en"
+                            ? "bg-[#CC8500] text-white"
+                            : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                        }`}
+                      >
+                        <span>English</span>
+                        {lang === "en" && <span>✓</span>}
+                      </button>
+                      <button
+                        onClick={() => setLang("cs")}
+                        className={`flex items-center justify-between w-full px-3 py-2 text-xs font-bold rounded-lg transition ${
+                          lang === "cs"
+                            ? "bg-[#CC8500] text-white"
+                            : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                        }`}
+                      >
+                        <span>Čeština</span>
+                        {lang === "cs" && <span>✓</span>}
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
 
@@ -164,38 +188,60 @@ export default function Navbar() {
                   </a>
                 ))}
 
-                {/* Mobile Setting */}
-                <div className="pt-2 border-t border-slate-200 dark:border-slate-800">
-                  <div className="text-xs font-bold text-slate-400 dark:text-slate-500 mb-2 uppercase tracking-wider">
-                    {t("Language", "Jazyk")}
+                {/* Mobile Settings (Theme + Language) */}
+                <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-3">
+                  {/* Theme Switcher Row */}
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+                      {t("Theme", "Vzhled")}
+                    </span>
+                    {mounted ? (
+                      <button
+                        onClick={toggleTheme}
+                        className="px-3 py-1.5 text-xs font-semibold rounded-md border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center gap-2"
+                      >
+                        <span>
+                          {theme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode"}
+                        </span>
+                      </button>
+                    ) : (
+                      <div className="w-24 h-8" />
+                    )}
                   </div>
-                  <div className="flex gap-2 mb-2">
-                    <button
-                      onClick={() => {
-                        setLang("en");
-                        setIsOpen(false);
-                      }}
-                      className={`flex-1 py-2 text-xs font-bold rounded-md transition ${
-                        lang === "en"
-                          ? "bg-[#CC8500] text-white"
-                          : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
-                      }`}
-                    >
-                      English
-                    </button>
-                    <button
-                      onClick={() => {
-                        setLang("cs");
-                        setIsOpen(false);
-                      }}
-                      className={`flex-1 py-2 text-xs font-bold rounded-md transition ${
-                        lang === "cs"
-                          ? "bg-[#CC8500] text-white"
-                          : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
-                      }`}
-                    >
-                      Čeština
-                    </button>
+
+                  {/* Language Selector */}
+                  <div>
+                    <div className="text-xs font-bold text-slate-400 dark:text-slate-500 mb-2 uppercase tracking-wider flex items-center gap-1.5">
+                      <span>🌐</span> {t("Language", "Jazyk")}
+                    </div>
+                    <div className="flex gap-2 mb-2">
+                      <button
+                        onClick={() => {
+                          setLang("en");
+                          setIsOpen(false);
+                        }}
+                        className={`flex-1 py-2 text-xs font-bold rounded-md transition ${
+                          lang === "en"
+                            ? "bg-[#CC8500] text-white"
+                            : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
+                        }`}
+                      >
+                        English
+                      </button>
+                      <button
+                        onClick={() => {
+                          setLang("cs");
+                          setIsOpen(false);
+                        }}
+                        className={`flex-1 py-2 text-xs font-bold rounded-md transition ${
+                          lang === "cs"
+                            ? "bg-[#CC8500] text-white"
+                            : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
+                        }`}
+                      >
+                        Čeština
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

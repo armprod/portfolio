@@ -31,10 +31,10 @@ export default function ProjectCard({
   };
 
   return (
-    <div className="group bg-[#181818] border border-slate-800 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:border-[#CC8500] hover:shadow-xl hover:shadow-[#CC8500]/10">
+    <div className="group bg-white dark:bg-[#181818] border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:border-[#CC8500] hover:shadow-xl hover:shadow-[#CC8500]/10">
       <div>
         {/* Pictures */}
-        <div className="h-64 border-b border-slate-800 relative overflow-hidden bg-[#151515]">
+        <div className="h-64 border-b border-slate-200 dark:border-slate-800 relative overflow-hidden bg-slate-100 dark:bg-[#151515]">
           <Image
             src={images[currentImageIndex]}
             alt={title}
@@ -68,17 +68,17 @@ export default function ProjectCard({
 
         {/* Description */}
         <div className="p-6">
-          <h4 className="text-xl font-bold text-slate-100 mb-2 group-hover:text-[#CC8500] transition-colors">
+          <h4 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 group-hover:text-[#CC8500] transition-colors">
             {title}
           </h4>
-          <p className="text-slate-400 text-sm mb-4 leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 text-sm mb-4 leading-relaxed">
             {description}
           </p>
           <div className="flex flex-wrap gap-2 mb-6">
             {tags.map((tag, index) => (
               <span
                 key={index}
-                className="text-xs bg-[#252525] text-[#CC8500] px-2.5 py-1 rounded"
+                className="text-xs bg-slate-100 dark:bg-[#252525] text-amber-600 dark:text-[#CC8500] px-2.5 py-1 rounded"
               >
                 {tag}
               </span>
@@ -94,7 +94,7 @@ export default function ProjectCard({
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-300 hover:text-[#CC8500] transition font-medium"
+            className="text-slate-700 dark:text-slate-300 hover:text-[#CC8500] dark:hover:text-[#CC8500] transition font-medium"
           >
             GitHub →
           </a>
