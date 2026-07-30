@@ -19,7 +19,7 @@ export default async function RootLayout({
   const langCookie = cookieStore.get("site-lang");
 
   const isDark = themeCookie?.value !== "light";
-  const currentLang = langCookie?.value === "en" ? "en" : "cs";
+  const currentLang = langCookie?.value === "cs" ? "cs" : "en";
 
   return (
     <html
