@@ -6,17 +6,22 @@ export default function Hero() {
   const { t } = useLanguage();
 
   return (
-    <AnimatedSection className="max-w-5xl mx-auto w-full my-auto py-16">
+    <AnimatedSection
+      id="hero"
+      className="max-w-5xl mx-auto w-full py-16 scroll-mt-16"
+    >
       <p className="text-[#CC8500] font-medium mb-3">
         {t("Hi, my name is", "Ahoj, jmenuji se")}
       </p>
 
       <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 mb-6">
         Daniel Knieradl{" "}
-        <span className="text-slate-400 dark:text-slate-500">
-          {t("/ IT Enthusiast", "/ IT Nadšenec")}
-        </span>
+        <span className="text-slate-400 dark:text-slate-500">/ Armprod</span>
       </h1>
+
+      <p className="text-[#CC8500] font-medium mb-3">
+        {t("And I make apps ...", "A vytvářím aplikace ...")}
+      </p>
 
       <div className="text-slate-600 dark:text-slate-400 text-lg md:text-xl max-w-2xl mb-8 leading-relaxed">
         <p>

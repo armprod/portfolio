@@ -26,15 +26,18 @@ export default function Experience() {
         "PHP",
         "SQL",
         "Python",
+        "CCNA1",
+        "CCNA2",
+        "...",
       ],
     },
     {
       role: t("IT Enthusiast", "IT Nadšenec"),
       company: t("Self-Taught", "Samouk"),
-      period: "2025 - Present",
+      period: "2024 - Present",
       description: t(
-        "C# cross-platform applications, Avalonia UI framework, Modern WEB apllications using React, Typescript and Node.js",
-        "Multiplatformní aplikace v jazyce C#, framework Avalonia UI, moderní webové aplikace využívající React, TypeScript a Node.js",
+        "C# cross-platform applications, Avalonia UI framework, Modern WEB apllications using Next.js framework, React, Typescript and Node.js",
+        "Multiplatformní aplikace v jazyce C#, framework Avalonia UI, moderní webové aplikace využívající Next.js framework, React, TypeScript a Node.js",
       ),
       skills: [
         "C#",
@@ -43,6 +46,8 @@ export default function Experience() {
         "TypeScript",
         "Next.js",
         "Tailwind CSS",
+        "React",
+        "...",
       ],
     },
   ];

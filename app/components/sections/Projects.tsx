@@ -19,8 +19,8 @@ export default function Projects() {
         "/images/Armprod_Calculator_basic.png",
         "/images/Armprod_Calculator_scientific.png",
       ],
-      tags: ["C#", ".NET", "Avalonia UI"],
-      githubUrl: "https://github.com",
+      tags: ["C#", ".NET", "Avalonia UI", "Cross-platform"],
+      githubUrl: "https://github.com/armprod/ArmprodCalculator",
     },
     {
       title: t("My personal web portfolio", "Mé osobní webové portfolio"),
@@ -28,9 +28,28 @@ export default function Projects() {
         "A modern website created using Next.js, TypeScript and Tailwind CSS",
         "Moderní webová stránka vytvořená pomocí Next.js, TypeScriptu a Tailwind CSS",
       ),
-      images: ["/images/Armprod_Calculator_basic.png"],
-      tags: ["Next.js", "Tailwind"],
-      githubUrl: "https://github.com",
+      images: [
+        "/images/portfolio_dark.png",
+        "/images/portfolio_dark_contact.png",
+        "/images/portfolio_light.png",
+        "/images/portfolio_dark_mobile.png",
+      ],
+      tags: ["Next.js", "TypeScript", "Tailwind"],
+      githubUrl: "https://github.com/armprod/portfolio",
+    },
+    {
+      title: "Armprod Valley",
+      description: t(
+        "My first game with my own graphics, inspired by game called Stardew Valley",
+        "Moje první hra s vlastní grafikou, inspirovaná hrou Stardew Valley",
+      ),
+      images: [
+        "/images/Armprod_Valley.png",
+        "/images/Armprod_Valley_ingame.png",
+        "/images/Armprod_Valley_gameplay.png",
+      ],
+      tags: ["C#", ".NET", "godot", "JSON"],
+      githubUrl: "https://github.com/armprod/ArmprodValley",
     },
   ];
 
@@ -87,13 +106,13 @@ export default function Projects() {
             </p>
             <div className="flex flex-wrap gap-2 mb-6">
               <span className="text-xs bg-slate-100 dark:bg-[#252525] text-amber-600 dark:text-amber-500/80 px-2.5 py-1 rounded">
-                C#
+                ???
               </span>
               <span className="text-xs bg-slate-100 dark:bg-[#252525] text-amber-600 dark:text-amber-500/80 px-2.5 py-1 rounded">
-                ASP.NET Core
+                ???
               </span>
               <span className="text-xs bg-slate-100 dark:bg-[#252525] text-amber-600 dark:text-amber-500/80 px-2.5 py-1 rounded">
-                SQL
+                ???
               </span>
             </div>
           </div>

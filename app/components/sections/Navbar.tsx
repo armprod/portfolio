@@ -35,6 +35,7 @@ export default function Navbar() {
   }, [showLangMenu]);
 
   const navLinks = [
+    { href: "#hero", label: t("Home", "Úvod") },
     { href: "#about-me", label: t("About Me", "O mně") },
     { href: "#skills", label: t("Skills", "Dovednosti") },
     { href: "#projects", label: t("Projects", "Projekty") },

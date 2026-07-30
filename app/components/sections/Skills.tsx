@@ -26,8 +26,8 @@ export default function Skills() {
             <li>• C# & .NET / .NET Core</li>
             <li>• {t("SQL and Databases", "SQL a Databáze")}</li>
             <li>• {t("API & Architecture", "API & Architektura")}</li>
-            <li>• Python, PHP</li>
-            <li>• Node.js (JavaScript, TypeScript)</li>
+            <li>• Python & PHP</li>
+            <li>• Node.js / Next.js</li>
           </ul>
         </div>
 
@@ -49,6 +49,7 @@ export default function Skills() {
             {t("Tools & AI", "Nástroje a AI")}
           </h3>
           <ul className="space-y-2 text-slate-600 dark:text-slate-400 text-sm">
+            <li>• VS Code / Visual Studio</li>
             <li>• Git & GitHub</li>
             <li>• {t("AI assistants", "AI asistenti")}</li>
             <li>• {t("Prompts Writing", "Psaní Promptů")}</li>
