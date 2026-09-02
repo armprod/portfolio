@@ -3,6 +3,7 @@
 import ProjectCard from "../ui/ProjectCard";
 import AnimatedSection from "../ui/AnimatedSection";
 import { useLanguage } from "@/app/context/ThemeLanguageContext";
+import { title } from "process";
 
 export default function Projects() {
   const { t } = useLanguage();
@@ -22,6 +23,40 @@ export default function Projects() {
       tags: ["C#", ".NET", "Avalonia UI", "Cross-platform"],
       githubUrl: "https://github.com/armprod/ArmprodCalculator",
     },
+    
+    {
+      title: "Armprod Weather",
+      description: t(
+        "A robust, multi-platform (though primarily mobile) weather forecasting app developed in C# (.NET) using the Avalonia UI framework. As well as standard weather indicators, it also offers a range of more advanced yet useful features",
+        "Robustní multiplatformní (primarně ale mobilní) aplikace pro předpověď počasí vyvinutá v jazyce C# (.NET) s využitím frameworku Avalonia UI. Kromě běžných ukazatelů počási nabízí taky spoustu pokročilejších ale užitečných ukazatelů",
+      ),
+      images : [
+        "/images/armprod_weather_icon.png",
+        "/images/armprod_weather_1.jpg",
+        "/images/armprod_weather_2.jpg",
+        "/images/armprod_weather_3.jpg",
+        "/images/armprod_weather_4.jpg",
+        "/images/armprod_weather_5.jpg",
+      ],
+      tags: ["C#", ".NET", "Avalonia UI", "Cross-platform", "Mobile", "Open-Meteo API"],
+      githubUrl: "https://github.com/armprod/ArmprodWeather",
+    },
+
+    {
+      title: "Armprod Valley",
+      description: t(
+        "My first game with my own graphics, inspired by game called Stardew Valley",
+        "Moje první hra s vlastní grafikou, inspirovaná hrou Stardew Valley",
+      ),
+      images: [
+        "/images/Armprod_Valley.png",
+        "/images/Armprod_Valley_ingame.png",
+        "/images/Armprod_Valley_gameplay.png",
+      ],
+      tags: ["C#", ".NET", "godot", "JSON"],
+      githubUrl: "https://github.com/armprod/ArmprodValley",
+    },
+
     {
       title: t("My personal web portfolio", "Mé osobní webové portfolio"),
       description: t(
@@ -37,20 +72,7 @@ export default function Projects() {
       tags: ["Next.js", "TypeScript", "Tailwind"],
       githubUrl: "https://github.com/armprod/portfolio",
     },
-    {
-      title: "Armprod Valley",
-      description: t(
-        "My first game with my own graphics, inspired by game called Stardew Valley",
-        "Moje první hra s vlastní grafikou, inspirovaná hrou Stardew Valley",
-      ),
-      images: [
-        "/images/Armprod_Valley.png",
-        "/images/Armprod_Valley_ingame.png",
-        "/images/Armprod_Valley_gameplay.png",
-      ],
-      tags: ["C#", ".NET", "godot", "JSON"],
-      githubUrl: "https://github.com/armprod/ArmprodValley",
-    },
+
   ];
 
   return (
