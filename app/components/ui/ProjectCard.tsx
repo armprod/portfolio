@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 
 interface ProjectCardProps {
@@ -19,46 +19,82 @@ export default function ProjectCard({
   githubUrl,
 }: ProjectCardProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
 
-  const nextImage = (e: React.MouseEvent) => {
+  const nextImage = (e: React.MouseEvent | React.TouchEvent) => {
     e.preventDefault();
     setCurrentImageIndex((prev) => (prev + 1) % images.length);
   };
 
-  const prevImage = (e: React.MouseEvent) => {
+  const prevImage = (e: React.MouseEvent | React.TouchEvent) => {
     e.preventDefault();
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+
+    const distance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50;
+
+    if (distance > minSwipeDistance) {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    } else if (distance < -minSwipeDistance) {
+      setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    }
+
+    touchStartX.current = 0;
+    touchEndX.current = 0;
   };
 
   return (
     <div className="group bg-white dark:bg-[#181818] border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:border-[#CC8500] hover:shadow-xl hover:shadow-[#CC8500]/10">
       <div>
-        {/* Pictures */}
-        <div className="h-64 border-b border-slate-200 dark:border-slate-800 relative overflow-hidden bg-slate-100 dark:bg-[#151515]">
+        {/* Pictures with Swipe & Buttons */}
+        <div 
+          className="h-64 border-b border-slate-200 dark:border-slate-800 relative overflow-hidden bg-slate-100 dark:bg-[#151515] select-none"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <Image
             src={images[currentImageIndex]}
             alt={title}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-contain group-hover:scale-105 transition duration-500 p-2"
+            className="object-contain group-hover:scale-105 transition duration-500 p-2 pointer-events-none"
           />
 
           {images.length > 1 && (
             <>
+              {/* Left Button - always visible on touch devices, or via group-hover on desktop */}
               <button
                 onClick={prevImage}
-                className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-[#CC8500] text-white w-8 h-8 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
-                aria-label="Předchozí obrázek"
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-[#CC8500] text-white w-8 h-8 flex items-center justify-center rounded-full opacity-90 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 z-10"
+                aria-label="Previous image"
               >
                 ‹
               </button>
+              
+              {/* Right Button */}
               <button
                 onClick={nextImage}
-                className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-[#CC8500] text-white w-8 h-8 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
-                aria-label="Další obrázek"
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-[#CC8500] text-white w-8 h-8 flex items-center justify-center rounded-full opacity-90 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 z-10"
+                aria-label="Next image"
               >
                 ›
               </button>
+
               <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-0.5 rounded z-10">
                 {currentImageIndex + 1} / {images.length}
               </div>
@@ -87,7 +123,7 @@ export default function ProjectCard({
         </div>
       </div>
 
-      {/* GitHub & Other Links*/}
+      {/* GitHub & Other Links */}
       {githubUrl && (
         <div className="px-6 pb-6 flex gap-4 text-sm">
           <a
